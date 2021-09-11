@@ -2,6 +2,7 @@ package glfw
 
 import (
 	"fmt"
+	"log"
 	"runtime"
 	"sync"
 	"time"
@@ -151,6 +152,7 @@ func (d *gLDriver) runGL() {
 }
 
 func (d *gLDriver) repaintWindow(w *window) {
+	log.Println("repaint window")
 	canvas := w.canvas
 	w.RunWithContext(func() {
 		if w.canvas.ensureMinSize() {
