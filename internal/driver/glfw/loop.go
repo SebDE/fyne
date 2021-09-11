@@ -79,7 +79,7 @@ func (d *gLDriver) initGLFW() {
 }
 
 func (d *gLDriver) runGL() {
-	eventTick := time.NewTicker(time.Second / 60)
+	eventTick := time.NewTicker(time.Second / 10)
 	runMutex.Lock()
 	runFlag = true
 	runMutex.Unlock()
@@ -177,7 +177,7 @@ func (d *gLDriver) repaintWindow(w *window) {
 func (d *gLDriver) startDrawThread() {
 	settingsChange := make(chan fyne.Settings)
 	fyne.CurrentApp().Settings().AddChangeListener(settingsChange)
-	draw := time.NewTicker(time.Second / 60)
+	draw := time.NewTicker(time.Second / 10)
 
 	go func() {
 		runtime.LockOSThread()
